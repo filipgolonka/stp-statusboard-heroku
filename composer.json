@@ -1,5 +1,5 @@
 {
-  "name": "rkanski/stp-statusboard-heroku",
+  "name": "rafalkanski/stp-statusboard-heroku",
   "description": "Heroku widget for stp-silex-statusboard",
   "license": "MIT",
   "authors": [
