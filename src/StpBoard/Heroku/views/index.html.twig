@@ -5,20 +5,29 @@
     .heroku .title {
         font-size: 24px;
     }
+    .herokuicon .green {
+        color: limegreen;
+    }
+    .herokuicon .orange {
+        color: orange;
+    }
+    .herokuicon .red {
+        color: red;
+    }
 </style>
 <div class="boardContent heroku">
     <div class="title">Heroku Status</div>
     {% if status == constant('StpBoard\\Heroku\\HerokuControllerProvider::STATUS_OK') %}
     <div class="herokuicon">
-        <i class="glyphicon glyphicon-ok"></i>
+        <i class="glyphicon glyphicon-ok green"></i>
     </div>
     {% elseif status == constant('StpBoard\\Heroku\\HerokuControllerProvider::STATUS_WARNING') %}
     <div class="herokuicon">
-        <i class="glyphicon glyphicon-fire"></i>
+        <i class="glyphicon glyphicon-fire orange"></i>
     </div>
     {%  else %}
     <div class="herokuicon">
-        <i class="glyphicon glyphicon-remove"></i>
+        <i class="glyphicon glyphicon-remove red"></i>
     </div>
     {% endif %}
 </div>
