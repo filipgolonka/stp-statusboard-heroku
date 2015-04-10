@@ -1,1 +1,24 @@
-HEROKU TEST
+<style>
+    .heroku .herokuicon {
+        font-size: 160px;
+    }
+    .heroku .title {
+        font-size: 24px;
+    }
+</style>
+<div class="boardContent heroku">
+    <div class="title">Heroku Status</div>
+    {% if status == constant('StpBoard\\Heroku\\HerokuControllerProvider::STATUS_OK') %}
+    <div class="herokuicon">
+        <i class="glyphicon glyphicon-ok"></i>
+    </div>
+    {% elseif status == constant('StpBoard\\Heroku\\HerokuControllerProvider::STATUS_WARNING') %}
+    <div class="herokuicon">
+        <i class="glyphicon glyphicon-fire"></i>
+    </div>
+    {%  else %}
+    <div class="herokuicon">
+        <i class="glyphicon glyphicon-remove"></i>
+    </div>
+    {% endif %}
+</div>
