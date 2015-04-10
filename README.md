@@ -5,5 +5,5 @@
 ```
 -
   id: heroku1
-  provider: \StpBoard\Heroku\WeatherControllerProvider
+  provider: \StpBoard\Heroku\HerokuControllerProvider
 ```
