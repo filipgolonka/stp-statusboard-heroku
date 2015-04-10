@@ -24,6 +24,17 @@ class HerokuControllerProvider implements ControllerProviderInterface, BoardProv
         $this->initTwig(__DIR__ . '/views');
         $controllers = $app['controllers_factory'];
 
+        $controllers->get(
+            '/',
+            function (Application $app) {
+
+                return $this->twig->render(
+                    'index.html.twig'
+                );
+
+            }
+        );
+
         return $controllers;
 
     }
