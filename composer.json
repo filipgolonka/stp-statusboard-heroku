@@ -10,7 +10,8 @@
   ],
   "require": {
     "silex/silex": "1.2.*",
-    "mplachta/stp-statusboard-base": "dev-master"
+    "mplachta/stp-statusboard-base": "dev-master",
+    "guzzle/guzzle": "3.9.*"
   },
   "autoload": {
     "psr-0": {
