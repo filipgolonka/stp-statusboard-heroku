@@ -1,22 +1,5 @@
-<style>
-    .heroku .herokuicon {
-        font-size: 160px;
-    }
-    .heroku .title {
-        font-size: 24px;
-    }
-    .herokuicon .green {
-        color: limegreen;
-    }
-    .herokuicon .orange {
-        color: orange;
-    }
-    .herokuicon .red {
-        color: red;
-    }
-</style>
-<div class="boardContent heroku">
-    <div class="title">Heroku Status</div>
+{%  extends 'widget.html.twig' %}
+{%  block widget %}
     {% if status == constant('StpBoard\\Heroku\\HerokuControllerProvider::STATUS_OK') %}
     <div class="herokuicon">
         <i class="glyphicon glyphicon-ok green"></i>
@@ -30,4 +13,4 @@
         <i class="glyphicon glyphicon-remove red"></i>
     </div>
     {% endif %}
-</div>
+{%  endblock %}

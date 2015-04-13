@@ -2,6 +2,7 @@
 
 namespace StpBoard\Heroku;
 
+use Guzzle\Http\Client;
 use Silex\Application;
 use Silex\ControllerProviderInterface;
 use StpBoard\Base\BoardProviderInterface;
@@ -34,14 +35,29 @@ class HerokuControllerProvider implements ControllerProviderInterface, BoardProv
 
                 $herokuStatus = self::STATUS_ERROR;
 
-                if ($response = file_get_contents('https://status.heroku.com/api/v3/current-status')) {
-                    $statusArray = json_decode($response, true);
-                    if ($statusArray['status']['Production'] == 'green') {
-                        $herokuStatus = self::STATUS_OK;
-                        if ($statusArray['status']['Development'] != 'green') {
-                            $herokuStatus = self::STATUS_WARNING;
+                try {
+
+                    $client = new Client('https://status.heroku.com');
+
+                    $httpResponse = $client
+                        ->get('/api/v3/current-status')
+                        ->send();
+
+                    if ($httpResponse->getStatusCode() === 200) {
+
+                        $jsonArray = $httpResponse->json();
+                        if ($jsonArray['status']['Production'] == 'green') {
+                            $herokuStatus = self::STATUS_OK;
+                            if ($jsonArray['status']['Development'] != 'green') {
+                                $herokuStatus = self::STATUS_WARNING;
+                            }
                         }
                     }
+
+                } catch (\Exception $e) {
+                    return $this->twig->render(
+                        'error.html.twig'
+                    );
                 }
 
                 return $this->twig->render(
