@@ -4,6 +4,7 @@ namespace StpBoard\Heroku;
 
 use Guzzle\Http\Client;
 use Silex\Application;
+use Silex\ControllerCollection;
 use Silex\ControllerProviderInterface;
 use StpBoard\Base\BoardProviderInterface;
 use StpBoard\Base\TwigTrait;
@@ -17,12 +18,21 @@ class HerokuControllerProvider implements ControllerProviderInterface, BoardProv
 
     use TwigTrait;
 
+
+    /**
+     * Returns route prefix
+     * @return string
+     */
     public static function getRoutePrefix(){
 
         return '/heroku';
 
     }
 
+    /**
+     * @param Application $app An Application instance
+     * @return ControllerCollection A ControllerCollection instance
+     */
     public function connect(Application $app)
     {
 
